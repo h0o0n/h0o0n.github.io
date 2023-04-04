@@ -4,7 +4,7 @@ excerpt: ""
 categories:
   - JavaScript
 tags:
-  - [JavaScript, p5.js, Git]
+  - [JavaScript, Git]
 
 toc: true
 toc_sticky: true
@@ -15,7 +15,7 @@ last_modified_at: 2023-03-31
 
 
 # 작성중 (HTML/ JavaScript 포함/ CSS 미포함)
-
+![](/img/MovieResv.png)
 ![](/img/MovieResv2.png)
 
 ## Code
