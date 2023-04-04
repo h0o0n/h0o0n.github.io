@@ -16,7 +16,7 @@ last_modified_at: 2023-03-31
 
 # 작성중 (HTML/ JavaScript 포함/ CSS 미포함)
 
-![](img/MovieResv2.png)
+![](/img/MovieResv2.png)
 
 ## Code
 ```html

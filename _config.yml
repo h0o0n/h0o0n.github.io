@@ -78,10 +78,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+img_cdn: 
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'assets/img/favicons/apple-touch-icon.png'
+avatar: img/Thinking_Face.webp
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -159,7 +159,7 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img
+      path: assets/img/favicons
     values:
       swcache: true
   - scope:
