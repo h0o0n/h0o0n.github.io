@@ -1,4 +1,5 @@
 ---
+published: false
 title:  "[Spring] 스프링 JdbcTemplate"
 excerpt: ""
 categories:

@@ -1,4 +1,5 @@
 ---
+published: false
 title:  "[Spring/H2] 스프링 DB 접근"
 excerpt: ""
 categories:

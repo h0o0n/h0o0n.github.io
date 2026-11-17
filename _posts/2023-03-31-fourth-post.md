@@ -1,4 +1,5 @@
 ---
+published: false
 title:  "[JavaScript] 영화관 좌석 예매"
 excerpt: ""
 categories:

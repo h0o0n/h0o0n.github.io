@@ -1,4 +1,5 @@
 ---
+published: false
 title:  "[Jekyll] 블로그 포스팅하는 방법"
 excerpt: "md 파일에 마크다운 문법으로 작성하여 Github 원격 저장소에 업로드 해보기. Intelij 사용 로컬 서버에서 확인 후 Git에 업로드 하기."
 categories:

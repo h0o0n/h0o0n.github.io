@@ -38,7 +38,11 @@
       </a>
     </li>
     <!-- the real tabs -->
+    {% assign hidden_sidebar_tabs = '/categories/,/tags/,/archives/,/about/' | split: ',' %}
     {% for tab in site.tabs %}
+    {% if hidden_sidebar_tabs contains tab.url %}
+      {% continue %}
+    {% endif %}
     <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
       <a href="{{ tab.url | relative_url }}" class="nav-link">
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
