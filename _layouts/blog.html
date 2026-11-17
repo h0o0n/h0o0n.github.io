@@ -30,6 +30,14 @@
   </main>
   <footer class="site-footer">
     <div class="shell footer-inner">
+      {% if page.layout == 'home' %}
+        {% assign counter_site = site.url | split: '://' | last | append: site.baseurl %}
+        <div class="visit-counter" id="visit-counter" data-site="{{ counter_site | escape }}" hidden>
+          <img alt="오늘 방문 수" height="20" referrerpolicy="no-referrer">
+          <img alt="누적 방문 수" height="20" referrerpolicy="no-referrer">
+        </div>
+        <script src="{{ '/assets/js/visit-counter.js' | relative_url }}" defer></script>
+      {% endif %}
       {% if site.github.username %}
         <a href="https://github.com/{{ site.github.username | escape }}">GitHub <span aria-hidden="true">↗</span></a>
       {% endif %}

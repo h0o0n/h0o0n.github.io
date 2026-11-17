@@ -7,7 +7,7 @@
   --accent: #175c42;
   --tool: #edf3e9;
   --tool-hover: #e3eede;
-  font-family: Inter, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-family: Arial, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
   background: var(--canvas);
   color: var(--ink);
 }
@@ -73,6 +73,11 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .post-row p { margin: 6px 0 0; }
 .post-pages { display: flex; gap: 16px; margin-top: 20px; font-size: 14px; }
 .footer-inner { justify-content: flex-end; min-height: 66px; color: var(--muted); font-size: 13px; }
+.visit-counter:not([hidden]), .visit-counter-preview { margin-inline-end: auto; }
+.visit-counter:not([hidden]) { display: flex; flex-wrap: wrap; gap: 4px; }
+.visit-counter img { display: block; }
+.visit-counter img[hidden] { display: none; }
+.visit-counter-preview { color: var(--muted); font-variant-numeric: tabular-nums; }
 .footer-inner a { text-decoration: none; }
 .footer-inner a:hover { text-decoration: underline; }
 @media (max-width: 460px) {
