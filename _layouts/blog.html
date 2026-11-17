@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% include favicons.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 이동</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      {% if page.layout == 'home' %}
+        <h1 class="wordmark"><a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a></h1>
+      {% else %}
+        <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+      {% endif %}
+      <nav aria-label="주 메뉴">
+        <a href="{{ '/' | relative_url }}"{% if page.layout == 'home' %} aria-current="page"{% endif %}>홈</a>
+        <a href="{% if page.layout == 'home' %}#calculator{% else %}{{ '/' | relative_url }}#calculator{% endif %}">계산기</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content" class="shell site-main">
+    {% unless page.layout == 'home' %}
+      <h1 class="page-title">{{ page.title | escape }}</h1>
+    {% endunless %}
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      {% if site.github.username %}
+        <a href="https://github.com/{{ site.github.username | escape }}">GitHub <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </div>
+  </footer>
+</body>
+</html>

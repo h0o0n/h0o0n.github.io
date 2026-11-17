@@ -1,0 +1,91 @@
+:root {
+  color-scheme: light dark;
+  --canvas: #f8f9f5;
+  --ink: #1f2620;
+  --muted: #536054;
+  --line: #d8dfd5;
+  --accent: #175c42;
+  --tool: #edf3e9;
+  --tool-hover: #e3eede;
+  font-family: Inter, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-underline-offset: .2em; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.shell { width: min(100% - 2 * clamp(18px, 5vw, 48px), 820px); margin-inline: auto; }
+.skip-link { position: absolute; top: 12px; left: 12px; padding: 8px 12px; background: var(--canvas); transform: translateY(-200%); }
+.skip-link:focus { transform: none; }
+.site-header { border-bottom: 1px solid var(--line); }
+.site-footer { border-top: 1px solid var(--line); }
+.header-inner, .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-inner { min-height: 68px; }
+.wordmark { margin: 0; font-size: 20px; font-weight: 780; letter-spacing: -.055em; text-decoration: none; }
+.wordmark a { text-decoration: none; }
+.site-header nav { display: flex; gap: clamp(16px, 4vw, 30px); }
+.site-header nav a { padding-block: 10px; color: var(--muted); font-size: 14px; font-weight: 650; text-decoration: none; }
+.site-header nav a:hover, .site-header nav [aria-current="page"] { color: var(--accent); text-decoration: underline; }
+.site-main { flex: 1; padding-block: clamp(28px, 7vw, 64px) clamp(48px, 10vw, 104px); }
+.page-title { margin: 0 0 24px; font-size: clamp(28px, 6vw, 46px); letter-spacing: -.055em; }
+.home-section + .home-section { margin-top: 42px; }
+.home-section > h2 { margin: 0 0 12px; font-size: 15px; font-weight: 750; }
+.tool-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(18px, 5vw, 28px);
+  background: var(--tool);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  list-style: none;
+}
+.tool-link::-webkit-details-marker { display: none; }
+.tool-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.tool-link:hover { background: var(--tool-hover); }
+.tool-link:hover strong { text-decoration: underline; }
+.tool-copy { display: grid; gap: 7px; }
+.tool-copy strong { font-size: clamp(19px, 4vw, 25px); letter-spacing: -.04em; }
+.tool-copy > span { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.tool-arrow { color: var(--accent); font-size: 26px; line-height: 1; }
+.tool-arrow::before { content: "+"; }
+.calculator-disclosure[open] .tool-arrow::before { content: "−"; }
+.calculator-disclosure { scroll-margin-top: 20px; }
+.calculator-body { display: grid; grid-template-rows: 1fr; }
+.calculator-reveal { min-height: 0; overflow: hidden; padding-top: 14px; }
+.calculator-disclosure[open] .calculator-body {
+  animation: calculator-expand 300ms cubic-bezier(.2, .75, .3, 1);
+}
+@keyframes calculator-expand {
+  from { grid-template-rows: 0fr; opacity: 0; }
+  to { grid-template-rows: 1fr; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .calculator-disclosure[open] .calculator-body { animation: none; }
+}
+.post-row { display: grid; grid-template-columns: minmax(90px, auto) 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); }
+.post-row time, .post-row p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.post-row h3 { margin: 0; font-size: 17px; }
+.post-row p { margin: 6px 0 0; }
+.post-pages { display: flex; gap: 16px; margin-top: 20px; font-size: 14px; }
+.footer-inner { justify-content: flex-end; min-height: 66px; color: var(--muted); font-size: 13px; }
+.footer-inner a { text-decoration: none; }
+.footer-inner a:hover { text-decoration: underline; }
+@media (max-width: 460px) {
+  .post-row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #191e1a;
+    --ink: #f2f6ee;
+    --muted: #b6c2b6;
+    --line: #384439;
+    --accent: #a7dbc1;
+    --tool: #222e25;
+    --tool-hover: #2a3a2f;
+  }
+}

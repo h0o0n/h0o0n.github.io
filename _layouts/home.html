@@ -1,8 +1,6 @@
 ---
-layout: page
-# The Home page layout
+layout: blog
 ---
-
 {% assign pinned = site.posts | where: "pin", "true" %}
 {% assign default = site.posts | where_exp: "item", "item.pin != true and item.hidden != true" %}
 
@@ -38,57 +36,55 @@ layout: page
   {% endfor %}
 {% endif %}
 
-<div id="post-list">
-
-{% for post in posts %}
-
-  <div class="post-preview">
-    <h1>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h1>
-
-    <div class="post-content">
-      <p>
-        {% include no-linenos.html content=post.content %}
-        {{ content | markdownify | strip_html | truncate: 200 | escape }}
-      </p>
+<details id="calculator" class="home-section calculator-disclosure">
+  <summary class="tool-link">
+    <span class="tool-copy">
+      <strong>휴대폰 총비용 계산기</strong>
+      <span>자급제·알뜰폰과 통신사 약정의 기기값, 요금, 할부이자를 비교해요.</span>
+    </span>
+    <span class="tool-arrow" aria-hidden="true"></span>
+  </summary>
+  <div class="calculator-body">
+    <div class="calculator-reveal">
+      {% include phone-calculator-embed.html %}
     </div>
+  </div>
+</details>
+<script>
+  (() => {
+    const calculator = document.getElementById('calculator');
+    const link = document.querySelector('a[href="#calculator"]');
+    const openFromHash = () => {
+      if (window.location.hash === '#calculator') calculator.open = true;
+    };
+    link?.addEventListener('click', () => { calculator.open = true; });
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+  })();
+</script>
 
-    <div class="post-meta text-muted d-flex">
-      <div class="mr-auto">
-
-        <!-- posted date -->
-        <i class="far fa-calendar fa-fw"></i>
-        {% include datetime.html date=post.date %}
-
-        <!-- categories -->
-        {% if post.categories.size > 0 %}
-          <i class="far fa-folder-open fa-fw"></i>
-          <span>
-          {% for category in post.categories %}
-            {{ category }}
-            {%- unless forloop.last -%},{%- endunless -%}
-          {% endfor %}
-          </span>
-        {% endif %}
-
+{% if posts.size > 0 %}
+<section class="home-section" aria-labelledby="posts-title">
+  <h2 id="posts-title">최근 글</h2>
+  {% for post in posts %}
+    <article class="post-row">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y. %m. %d." }}</time>
+      <div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}</p>
       </div>
-
-      {% if post.pin %}
-      <div class="pin">
-        <i class="fas fa-thumbtack fa-fw"></i>
-        <span>{{ site.data.locales[site.lang].post.pin_prompt }}</span>
-      </div>
+    </article>
+  {% endfor %}
+  {% if paginator.total_pages > 1 %}
+    <nav class="post-pages" aria-label="글 목록 페이지">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}">← 이전</a>
       {% endif %}
-
-    </div> <!-- .post-meta -->
-
-  </div> <!-- .post-review -->
-
-{% endfor %}
-
-</div> <!-- #post-list -->
-
-{% if paginator.total_pages > 0 %}
-  {% include post-paginator.html %}
+      <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}">다음 →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</section>
 {% endif %}

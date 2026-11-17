@@ -1,0 +1,30 @@
+<iframe
+  id="phone-cost-calculator"
+  src="{{ '/assets/calculators/phone-cost.html' | relative_url }}"
+  title="휴대폰 총비용 계산기"
+  allow="clipboard-write"
+  height="850"
+  style="display: block; width: 100%; border: 0; border-radius: 12px;"
+></iframe>
+<script>
+  (() => {
+    const calculator = document.getElementById('phone-cost-calculator');
+    let observer;
+
+    calculator.addEventListener('load', () => {
+      if (observer) observer.disconnect();
+
+      const content = calculator.contentDocument?.querySelector('main');
+      if (!content) return;
+
+      const resize = () => {
+        const height = Math.ceil(content.getBoundingClientRect().height);
+        if (height > 0) calculator.height = height;
+      };
+
+      resize();
+      observer = new ResizeObserver(resize);
+      observer.observe(content);
+    });
+  })();
+</script>
